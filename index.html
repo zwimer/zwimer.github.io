@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="My Website">
+    <meta name="author" content="Zachary Wimer">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Zachary Wimer's Website!</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -101,7 +101,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/portfolio/cabin.png" class="img-responsive" alt="">
+                        <img src="img/CAPP-Reporter.png" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -111,7 +111,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/portfolio/cake.png" class="img-responsive" alt="">
+                        <img src="img/AirCombat.png" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -273,6 +273,23 @@
         </a>
     </div>
 
+    <!-- Populate text below -->
+	<script src="/Users/zwimer/Desktop/markdown.min.js"></script>
+	<script>
+		function loadDoc(div, url) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200)
+					document.getElementById(div).innerHTML = markdown.toHTML(this.responseText);
+			};
+			xhttp.open("GET", url, true);
+			xhttp.send();
+		}
+		loadDoc("theREADME_1", "https://raw.githubusercontent.com/zwimer/CAPP-Reporter/master/README.md");
+		loadDoc("theREADME_2", "https://raw.githubusercontent.com/zwimer/AirCombat/master/README.md");
+	</script>
+
+
     <!-- Portfolio Modals -->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
@@ -286,21 +303,23 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>CAPP Reporter</h2>
                             <hr class="star-primary">
-							<img src="img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+							<img src="img/portfolio/CAPP-Reporter.png" class="img-responsive img-centered" alt="">
+							<div align="left">
+							<div id="theREADME_1"></div>
+							</div>
                             <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                <li>Wiki:
+                                    <strong><a href = "https://github.com/zwimer/CAPP-Reporter/wiki">Github wiki</a>
                                     </strong>
                                 </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                <li>RCOS:
+                                    <strong><a href="https://rcos.io/projects/zwimer/capp-reporter/profile">Observatory</a>
                                     </strong>
                                 </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                <li>Repo:
+                                    <strong><a href = "https://github.com/zwimer/CAPP-Reporter">Github Repo</a>
                                     </strong>
                                 </li>
                             </ul>
@@ -323,10 +342,12 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>Air Combat</h2>
                             <hr class="star-primary">
-                            <img src="img/portfolio/cake.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <img src="img/portfolio/AirCombat.png" class="img-responsive img-centered" alt="">
+							<div align="left">
+							<div id="theREADME_2"></div>
+							</div>
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
