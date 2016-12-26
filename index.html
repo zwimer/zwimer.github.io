@@ -276,13 +276,14 @@
     </div>
 
     <!-- Populate text below -->
-	<script src="js/markdown.min.js "></script>
+	<script src="js/markdown-it.js "></script>
 	<script>
 		function loadDoc(div, url) {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200)
-					document.getElementById(div).innerHTML = markdown.toHTML(this.responseText);
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById(div).innerHTML = window.markdownit().render(this.responseText);
+				}
 			};
 			xhttp.open("GET", url, true);
 			xhttp.send();
@@ -291,7 +292,6 @@
 		loadDoc("theREADME_2", "https://raw.githubusercontent.com/zwimer/AirCombat/master/README.md");
 		loadDoc("theREADME_3", "https://raw.githubusercontent.com/zwimer/RPI-Campus-Paths/master/README.md");
 	</script>
-
 
     <!-- Portfolio Modals -->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
