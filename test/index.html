@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-	:D 5
+	:D 6
 	
 	<script>
 
@@ -17,22 +17,10 @@
 
 		// Get the ip and create url
 		var ip = curl("https://icanhazip.com").trim();
-		alert(ip);
+		var addr = "https://www.geoplugin.net/json.gp?ip=" + ip;
 
-		/*
-		var ip;
-		alert("1");
-		var getip = function(ipobj) {
-			alert("2");
-			alert(ipobj);
-			alert("3");
-			ip = ipobj['ip'];
-			alert("4");
-			alert(ip);
-		};
-		*/
-		
-	// <script src="https://api.ipify.org?format=jsonp&callback=getip">
-	// </ 
+		// Print info
+		alert(curl(addr));
+  
 	</script>
 </html>
