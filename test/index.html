@@ -1,6 +1,41 @@
+<!DOCTYPE html>
 <html>
-	<header><title>This is title</title></header>
-	<body>
-		Hello world
-	</body>
+
+	:D 4
+	
+	<script>
+
+		/*
+		// Curl a website
+		function curl( site ) {
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open( "GET", site, false ); // false for synchronous request
+			xmlHttp.send( null );
+			return xmlHttp.responseText;
+		}
+		
+		alert("HI");
+
+		// Get the ip and create url
+		var ip = curl("http://icanhazip.com").trim();
+		alert(ip);
+		var addr = "http://www.geoplugin.net/json.gp?ip=" + ip;
+
+		// Print info
+		alert(curl(addr));
+		*/
+
+		var ip;
+		alert("1");
+		var getip = function(ipobj) {
+			alert("2");
+			alert(ipobj);
+			alert("3");
+			ip = ipobj['ip'];
+			alert("4");
+			alert(ip);
+	};
+		
+	</script>
+	<script src="https://api.ipify.org?format=jsonp&callback=getip"></script>
 </html>
