@@ -7,13 +7,9 @@
 
 		// Curl a website
 		function curl( site ) {
-			alert("1");
 			var xmlHttp = new XMLHttpRequest();
-			alert("2");
 			xmlHttp.open( "GET", site, false ); // false for synchronous request
-			alert("3");
 			xmlHttp.send( null );
-			alert("4");
 			return xmlHttp.responseText;
 		}
 		
