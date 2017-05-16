@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-	:D 6
+	:D 7
 	
 	<script>
 
@@ -17,7 +17,7 @@
 
 		// Get the ip and create url
 		var ip = curl("https://icanhazip.com").trim();
-		var addr = "https://www.geoplugin.net/json.gp?ip=" + ip;
+		var addr = "http://ipapi.co/" + ip "/json";
 
 		// Print info
 		alert(curl(addr));
