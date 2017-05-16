@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 
-	:D 8
+	:D 9
 	
 	<script>
 
 		// Curl a website
 		function curl( site ) {
 			var xmlHttp = new XMLHttpRequest();
-			xmlHttp.open( "GET", site, false ); // false for synchronous request
+			xmlHttp.open( "GET", site ); // false for synchronous request
 			xmlHttp.send( null );
 			return xmlHttp.responseText;
 		}
