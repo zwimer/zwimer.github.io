@@ -55,7 +55,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a href="https://zwimer.github.io/znc-selfmsg/">ZNC SelfMsg Docs</a></li>
-					<li><a href="https://zwimer.com/Blog/">SAT Blog</a></li>
+					<li><a href="./Blog/index.html">SAT Blog</a></li>
 					<li class="page-scroll"><a href="#github">Github</a></li>
 					<li class="page-scroll"><a href="#about">About</a></li>
 					<li class="page-scroll"><a href="#contact">Contact</a></li>
@@ -413,7 +413,7 @@
 		</div></div></div></div>
 	</div></div>
 
-	<!-- Populate text above using the Repos' READMEs -->
+	<!-- The script that renders markdown from a URL -->
 	<script src="js/markdown-it.js "></script>
 	<script>
 		function loadDoc(div, url) {
@@ -426,15 +426,47 @@
 			xhttp.open("GET", url, true);
 			xhttp.send();
 		}
+	</script>
 
-		// Run this function for every README needed
+	<div id="test" align="left">YOT</div>
+	<div id="q" align="left">YO</div>
+	<!-- Populate text above using the Repos' READMEs -->
+	<script>
 		loadDoc("theREADME_1", "https://raw.githubusercontent.com/zwimer/CAPP-Reporter/master/README.md");
 		loadDoc("theREADME_2", "https://raw.githubusercontent.com/zwimer/RPI-Campus-Paths/master/README.md");
 		loadDoc("theREADME_3", "https://raw.githubusercontent.com/zwimer/Pi-File-Server/master/README.md");
 		loadDoc("theREADME_4", "https://raw.githubusercontent.com/zwimer/AirCombat/master/README.md");
 		loadDoc("theREADME_5", "https://raw.githubusercontent.com/zwimer/OpSysProject1/master/README.md");
 		loadDoc("theREADME_6", "https://raw.githubusercontent.com/zwimer/Template-Meta-Tutorial/master/README.md");
+		//function loadDoc2(div, url) {
+			//var xhttp = new XMLHttpRequest();
+			//xhttp.onreadystatechange = function() {
+			//	document.getElementById(div).innerHTML = window.markdownit().render(this.responseText);
+			//};
+			//xhttp.open("GET", url, true);
+			//xhttp.send();
+		//}
+		var fileDisplayArea = document.getElementById('test');
+		function readTextFile(file)
+		{
+			var rawFile = new XMLHttpRequest();
+			rawFile.open("GET", file, false);
+			rawFile.onreadystatechange = function ()
+			{
+				if(rawFile.readyState === 4)
+				{
+					if(rawFile.status === 200 || rawFile.status == 0)
+					{
+						var allText = rawFile.responseText;
+						fileDisplayArea.innerHTML = allText 
+					}
+				}
+			}
+			rawFile.send(null);
+		}
 
+		readTextFile("file://./test");
+		loadDoc2("test", "./test")
 	</script>
 
 	<!-- jQuery -->
