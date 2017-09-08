@@ -21,13 +21,35 @@ September 7, 2017
 // Body
 After agreeing upon a topic to study for the next semester, my advisor, professor Moorthy, asked me to setup a blog so I could post frequently about my progress, hardships, findings, and just generally document this experience. Over the past two days I wrote this blog which auto-generates each post client side based on a directory containing each of these posts. These posts can render markdown ~~perfectly~~ fairly well.
 
-# I can make big text
-## Medium test
+<h1> bananas </h1>
+<html>
+<h1> bananas </h1>
+</html>
+
+# I can make text large
+## Medium text
 ### Perhaps even smaller text
 
 _Perhaps italics?_. *Bold isn't great...* ~~But at least I can strike through~~.
 
 <span style="color:red"> Since bold decided not to play well, I enabled the ability to inline html! </span>
+
+<html>
+	<style>
+	h3 {
+	  text-align: center;
+	  background: #CCCCCC;
+	  padding: .2em 1em;
+	  border-top: 3px solid #666666;
+	  border-bottom: 3px solid #999999;
+	}
+	</style>
+
+	</head>
+	<body>
+
+	<h3> And even CSS ! </h3>
+</html>
 
 1. This
 2. is
