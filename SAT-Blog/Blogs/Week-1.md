@@ -7,9 +7,10 @@
 First post!
 
 **!!! BLOG ITEM DELIMITER !!!**
+**!! RENDER LATEX !!**
 
 // Title description
-Creating a blog
+Creating a blog \(a^b\)
 
 **!!! BLOG ITEM DELIMITER !!!**
 
