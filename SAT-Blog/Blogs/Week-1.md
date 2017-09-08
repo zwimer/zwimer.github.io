@@ -37,7 +37,7 @@ _Perhaps italics?_. *Bold isn't great...* ~~But at least I can strike through~~.
 
 <html>
 	<style>
-	h3 {
+	h4 {
 	  text-align: center;
 	  background: #CCCCCC;
 	  padding: .2em 1em;
@@ -49,7 +49,7 @@ _Perhaps italics?_. *Bold isn't great...* ~~But at least I can strike through~~.
 	</head>
 	<body>
 
-	<h3> And even CSS ! </h3>
+	<h4> And even CSS ! </h4>
 </html>
 
 1. This
