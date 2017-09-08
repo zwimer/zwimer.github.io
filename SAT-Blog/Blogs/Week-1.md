@@ -21,11 +21,6 @@ September 7, 2017
 // Body
 After agreeing upon a topic to study for the next semester, my advisor, professor Moorthy, asked me to setup a blog so I could post frequently about my progress, hardships, findings, and just generally document this experience. Over the past two days I wrote this blog which auto-generates each post client side based on a directory containing each of these posts. These posts can render markdown ~~perfectly~~ fairly well.
 
-<h1> bananas </h1>
-<html>
-<h1> bananas </h1>
-</html>
-
 # I can make big text
 ## Medium test
 ### Perhaps even smaller text
