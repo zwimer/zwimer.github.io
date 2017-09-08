@@ -7,10 +7,9 @@
 First post!
 
 **!!! BLOG ITEM DELIMITER !!!**
-**!! RENDER LATEX !!**
 
 // Title description
-Creating a blog \(a^b\)
+Creating a blog
 
 **!!! BLOG ITEM DELIMITER !!!**
 
@@ -19,18 +18,14 @@ September 7, 2017
 
 **!!! BLOG ITEM DELIMITER !!!**
 **!! RENDER MARKDOWN !!**
+**!! RENDER LATEX !!**
+// Note: Markdown should always be rendered first as latex does not respect whitespace
 
 // Body
 After agreeing upon a topic to study for the next semester, my advisor, professor Moorthy, asked me to setup a blog so I could post frequently about my progress, hardships, findings, and just generally document this experience. Over the past two days I wrote this blog which auto-generates each post client side based on a directory containing each of these posts. These posts can render markdown ~~perfectly~~ fairly well.
 
-<h1> bananas </h1>
-<html>
-<h1> bananas </h1>
-</html>
-
 # I can make text large
-## Medium text
-### Perhaps even smaller text
+### Or small text
 
 _Perhaps italics?_. *Bold isn't great...* ~~But at least I can strike through~~.
 
@@ -38,7 +33,7 @@ _Perhaps italics?_. *Bold isn't great...* ~~But at least I can strike through~~.
 
 <html>
 	<style>
-	h4 {
+	h2 {
 	  text-align: center;
 	  background: #CCCCCC;
 	  padding: .2em 1em;
@@ -47,11 +42,11 @@ _Perhaps italics?_. *Bold isn't great...* ~~But at least I can strike through~~.
 	}
 	</style>
 
-	</head>
-	<body>
-
-	<h4> And even CSS ! </h4>
+	<h2> And even CSS ! </h2>
 </html>
+
+I can even write latex!
+$$f(a) = \sum_{i=0}^{\sum_{k=0}^w w}\frac{1}{2\pi i}\oint_\gamma\frac{f(z)}{z-a_i}dz$$
 
 1. This
 2. is
