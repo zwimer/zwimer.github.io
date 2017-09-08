@@ -1,6 +1,7 @@
 **!! RENDER MARKDOWN !!**
+**!! RENDER LATEX !!**
 **!!! BLOG ITEM DELIMITER !!!**
-// Define the delimiter and render commands
+// Define the render commands and delimiter
 
 // Title
 First post!

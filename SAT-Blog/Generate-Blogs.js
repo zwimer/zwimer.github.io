@@ -62,16 +62,25 @@ function remove_comments(input, comment_type) {
 // Given the blog text, render the markdown, format it as a blog, then add the blog. 
 function add_and_format_blog(blog_info, format_list) {
 
-	// Determine the blog info delimiter and split the blog_info
+	// Determine the delimiters of this file
 	var blog_split_by_line = blog_info.split("\n");
-	var delimiter = blog_split_by_line[1];
+	var md_render_marker = blog_split_by_line[0];
+	var tex_render_marker = blog_split_by_line[1];
+	var delimiter = blog_split_by_line[2];
+
+	// Split the blog up according to the delimiter
 	var split_blog = blog_info.split(delimiter);
 	
 	// Error checking
-	if ((format_list.length < 3) || (split_blog.length < 2)) {
-		alert("Error, either the format or blog has too few delimited fields to be interweved.");
+	if (md_rebder_marker === tex_render_marker) {
+		alert("Error, the markdown and tex markers as the same!");
+		return;
 	}
-	if (format_list.length !== (1 + split_blog.length)) {
+	else if (format_list.length < 3 || split_blog.length < 2) {
+		alert("Error: " + split_blog[1] + " has the wrong number of delimited fields!");
+		return;
+	}
+	else if (format_list.length !== (1 + split_blog.length)) {
 		alert("Error: " + split_blog[1] + " has the wrong number of delimited fields!");
 		return;
 	}
@@ -84,12 +93,15 @@ function add_and_format_blog(blog_info, format_list) {
 		format_list[i] = remove_comments(format_list[i].trim(), "//")
 	}
 
-	// Render markdown as required
-	var render_marker = blog_split_by_line[0];
+	// Render markdown and tex as required
 	for ( var i = 0; i < split_blog.length; ++i ) {
-		if (split_blog[i].startsWith(render_marker)) {
-			var to_render = split_blog[i].slice(1 + render_marker.length);
+		if (split_blog[i].startsWith(md_render_marker)) {
+			var to_render = split_blog[i].slice(1 + md_render_marker.length);
 			split_blog[i] = window.markdownit({"html":true}).render(to_render);
+		}
+		else if (split_blog[i].startsWith(tex_render_marker)) {
+			var to_render = split_blog[i].slice(1 + tex_render_marker.length);
+			split_blog[i] = "<div class=\"latex\">" + to_render + "</div>";
 		}
 	}
 
