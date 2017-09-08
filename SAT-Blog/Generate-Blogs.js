@@ -99,10 +99,13 @@ function add_and_format_blog(blog_info, format_list) {
 			if (split_blog[i].startsWith(md_render_marker)) {
 				var to_render = split_blog[i].slice(1 + md_render_marker.length);
 				split_blog[i] = window.markdownit({"html":true}).render(to_render);
+				alert(split_blog[i]);
 			}
 			if (split_blog[i].startsWith(tex_render_marker)) {
 				var to_render = split_blog[i].slice(1 + tex_render_marker.length);
 				split_blog[i] = "<div class=\"latex\">" + to_render + "</div>";
+				alert("tex");
+				alert(split_blog[i]);
 			}
 		}
 	}
