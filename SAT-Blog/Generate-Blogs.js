@@ -72,7 +72,7 @@ function add_and_format_blog(blog_info, format_list) {
 	var split_blog = blog_info.split(delimiter);
 	
 	// Error checking
-	if (md_rebder_marker === tex_render_marker) {
+	if (md_render_marker === tex_render_marker) {
 		alert("Error, the markdown and tex markers as the same!");
 		return;
 	}
