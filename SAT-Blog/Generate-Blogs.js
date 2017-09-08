@@ -93,20 +93,29 @@ function add_and_format_blog(blog_info, format_list) {
 		format_list[i] = remove_comments(format_list[i].trim(), "//")
 	}
 
+	// Render functions
+	md_fn = window.markdownit({"html":true}).render;
+	tex_fn = function(x) { return "<div class=\"latex\">" + x + "</div>"; }
+
 	// Render markdown and tex as required
 	for ( var i = 0; i < split_blog.length; ++i ) {
+
+		// Figure out what must be rendered
+		var render_functions = [];
 		while(split_blog[i].startsWith(md_render_marker) || split_blog[i].startsWith(tex_render_marker)) {
 			if (split_blog[i].startsWith(md_render_marker)) {
-				var to_render = split_blog[i].slice(1 + md_render_marker.length);
-				split_blog[i] = window.markdownit({"html":true}).render(to_render);
-				alert(split_blog[i]);
+				split_blog[i] = split_blog[i].slice(1 + md_render_marker.length);
+				render_functions.push(md_fn);
 			}
 			if (split_blog[i].startsWith(tex_render_marker)) {
-				var to_render = split_blog[i].slice(1 + tex_render_marker.length);
-				split_blog[i] = "<div class=\"latex\">" + to_render + "</div>";
-				alert("tex");
-				alert(split_blog[i]);
+				split_blog[i] = split_blog[i].slice(1 + tex_render_marker.length);
+				render_functions.push(tex_fn);
 			}
+		}
+
+		// Render it
+		for ( var k = 0; k < render_functions.length; ++k ) {
+			split_blog[i] = render_functions[k](split_blog[i]);	
 		}
 	}
 
