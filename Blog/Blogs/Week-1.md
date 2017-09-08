@@ -32,7 +32,7 @@ After agreeing upon a topic to study for the next semester, my advisor, professo
 
 _Perhaps italics?_. *Bold isn't great...* ~~But at least I can strike through~~.
 
- <span style="color:red"> Since bold decided not to play well, I enabled the ability to inline html! </span>
+<span style="color:red"> Since bold decided not to play well, I enabled the ability to inline html! </span>
 
 1. This
 2. is
