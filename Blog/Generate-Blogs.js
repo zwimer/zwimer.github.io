@@ -89,17 +89,7 @@ function add_and_format_blog(blog_info, format_list) {
 	for ( var i = 0; i < split_blog.length; ++i ) {
 		if (split_blog[i].startsWith(render_marker)) {
 			var to_render = split_blog[i].slice(1 + render_marker.length);
-			// enable everything
-			tmp = window.markdownit().render(to_render);
-			alert("Option 1");
-			alert(tmp);
-			md = window.markdownit({"html":true})
-			tmp = md.render(tmp)
-			alert("Option 2");
-			alert(tmp);
-			split_blog[i] = md.render(to_render);
-			alert("Option 3");
-			alert(split_blog[i]);
+			split_blog[i] = window.markdownit({"html":true}).render(to_render);
 		}
 	}
 
