@@ -233,7 +233,8 @@ function add_and_format_blog(filename, blog_info) {
 
 	// If the blog is new, record the div
 	if ( is_new ) {
-		document.getElementById(blogs_output_div).innerHTML += dv;
+		var tmp = document.getElementById(blogs_output_div).innerHTML;
+		document.getElementById(blogs_output_div).innerHTML = dv + tmp;
 	}
 
 	// Update the blog
