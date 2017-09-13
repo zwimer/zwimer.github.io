@@ -1,5 +1,7 @@
 **!! RENDER MARKDOWN !!**
 **!! RENDER LATEX !!**
+**!! STOP RENDERING !!**
+**!! READ MORE BELOW !!**
 **!!! BLOG ITEM DELIMITER !!!**
 // Define the render commands and delimiter
 
@@ -18,16 +20,21 @@ September 7, 2017
 
 **!!! BLOG ITEM DELIMITER !!!**
 **!! RENDER MARKDOWN !!**
-**!! RENDER LATEX !!**
 // Note: Markdown should always be rendered first as latex does not respect whitespace
 
 // Body
-After agreeing upon a topic to study for the next semester, my advisor, professor Moorthy, asked me to setup a blog so I could post frequently about my progress, hardships, findings, and just generally document this experience. Over the past two days I wrote this blog which auto-generates each post client side based on a directory containing each of these posts. These posts can render markdown ~~perfectly~~ fairly well.
+After agreeing upon a topic to study for the next semester, my advisor, professor Moorthy, asked me to setup a blog so I could post frequently about my progress, hardships, findings, and just generally document this experience. Over the past two days I wrote this blog which auto-generates each post client side based on a directory containing each of these posts. These posts can render markdown ~~perfectly~~ fairly well, but they can render latex fine!
 
+**!! READ MORE BELOW !!**
 # I can make text large
 ### Or small text
 
-_Perhaps italics?_. *Bold isn't great...* ~~But at least I can strike through~~.
+I can even write latex!
+**!! RENDER LATEX !!**
+$$f(a) = \sum_{i=0}^{\sum_{k=0}^w \frac{w}{k}}\frac{1}{2\pi i}\oint_\gamma\frac{f(z)}{z-a_i}dz$$
+**!! RENDER MARKDOWN !!**
+
+I can ~~strike through~~. _Perhaps italics?_. *Bold isn't great...*
 
 <span style="color:red"> Since bold decided not to play well, I enabled the ability to inline html! </span>
 
@@ -37,16 +44,14 @@ _Perhaps italics?_. *Bold isn't great...* ~~But at least I can strike through~~.
 	  text-align: center;
 	  background: #CCCCCC;
 	  padding: .2em 1em;
-	  border-top: 3px solid #666666;
-	  border-bottom: 3px solid #999999;
+	  border-top: 1px solid #666666;
+	  border-bottom: 1px solid #999999;
 	}
 	</style>
 
-	<h2> And even CSS ! </h2>
 </html>
 
-I can even write latex!
-$$f(a) = \sum_{i=0}^{\sum_{k=0}^w w}\frac{1}{2\pi i}\oint_\gamma\frac{f(z)}{z-a_i}dz$$
+## And even CSS !
 
 1. This
 2. is
@@ -85,4 +90,4 @@ Finally, images work as well!
 **!!! BLOG ITEM DELIMITER !!!**
 
 // Edits of this post
-0
+1

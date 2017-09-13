@@ -4,6 +4,7 @@
 //*                                                           *//
 //*************************************************************//
 
+// *** Settings ***
 
 // The div storing all the blogs
 var blogs_output_div;
@@ -14,6 +15,25 @@ var blog_folder;
 // The file containing the format for the blog post
 var format_file;
 
+// *** Automatically set / constants ***
+
+// Holds info about each blog, used by the READ MORE button
+// Blog file name mapped to the object it holds
+// Structure of each object: { "Beginning": xyz, "Continued" }
+var read_more_dict_dict = {};
+var read_more_key = "read-more";
+var marker_key = "marker";
+
+// Contains the format of a blog and a marker
+// denoting where the button info should be put
+var format_list = [];
+var button_marker = "";
+
+// A dict mapping a filename to an index in the ready_to_display_list.
+// The list contains the fully rendered html blogs. Together these
+// two variables comprise an ordered dictionary
+var ready_for_display_dict = {};
+var ready_for_display_list = [];
 
 //*************************************************************//
 //*                                                           *//
@@ -59,80 +79,173 @@ function remove_comments(input, comment_type) {
 	return not_comments.join("\n");
 }
 
+// Function used to render a chunk of text properly according to it's markers
+render_text = function( text, dict, read_more_dict, starting_entry ) {
+
+	// The output
+	var ret = "";
+
+	// Continue while the more of text should render
+	for ( var brk = false; text.length > 0;  ) {
+
+		// If a render marker was found, break
+		for ( var key in dict ) {
+			if ( (key !== starting_entry) && text.startsWith(key) ) { brk = true; break; }
+		}
+		if (brk === true) { break; }
+
+		// If the read more marker was found
+		if (text.startsWith(read_more_dict[marker_key])) {
+
+			// If everything should be displayed, remove this marker and continue
+			if ( read_more_dict[read_more_key] ) {
+				text = text.slice(read_more_dict[marker_key].length);
+				continue;
+			}
+
+			// Otherwise, add an ellipsis, then clear text and break
+			else {
+				ret += " ...";
+				text = "";
+				break;
+			}
+		}
+
+		// If the read more marker was not found
+		// then record the next character in text
+		else {
+			ret += text[0];
+			text = text.slice(1);
+		}
+	}
+
+	// Render it if there is anything to render
+	if (ret) { ret = dict[starting_entry](ret); }
+
+	// Remove the marker and recurse if needed
+	if ( text.trim().length ) {
+		text = text.slice(key.length).trim();
+		ret += render_text( text, dict, read_more_dict, key );
+	}
+
+	// Return the result
+	return ret;
+}
+
 // Given the blog text, render the markdown, format it as a blog, then add the blog. 
-function add_and_format_blog(blog_info, format_list) {
+function add_and_format_blog(filename, blog_info) {
 
 	// Determine the delimiters of this file
 	var blog_split_by_line = blog_info.split("\n");
 	var md_render_marker = blog_split_by_line[0];
 	var tex_render_marker = blog_split_by_line[1];
-	var delimiter = blog_split_by_line[2];
+	var no_render_marker = blog_split_by_line[2];
+	var read_more_marker = blog_split_by_line[3];
+	var delimiter = blog_split_by_line[4];
 
 	// Split the blog up according to the delimiter
 	var split_blog = blog_info.split(delimiter);
-	
+	split_blog.shift()
+
 	// Error checking
 	if (md_render_marker === tex_render_marker) {
-		alert("Error, the markdown and tex markers as the same!");
+		alert("Error: " + filename + " has identicaly the markdown and tex markers!");
 		return;
 	}
-	else if (format_list.length < 3 || split_blog.length < 2) {
-		alert("Error: " + split_blog[1] + " has the wrong number of delimited fields!");
+	else if (format_list.length < 2 || split_blog.length < 1) {
+		alert("Error: " + filename + " has too few delimited fields!");
 		return;
 	}
 	else if (format_list.length !== (1 + split_blog.length)) {
-		alert("Error: " + split_blog[1] + " has the wrong number of delimited fields!");
+		alert("Error: " + filename + " has the wrong number of delimited fields!");
 		return;
 	}
 
 	// Remove comment lines
 	for ( var i = 0; i < split_blog.length; ++i ) {
-		split_blog[i] = remove_comments(split_blog[i].trim(), "//")
+		split_blog[i] = remove_comments(split_blog[i].trim(), "//").trim()
 	}
 	for ( var i = 0; i < format_list.length; ++i ) {
-		format_list[i] = remove_comments(format_list[i].trim(), "//")
+		format_list[i] = remove_comments(format_list[i].trim(), "//").trim()
 	}
 
-	// Render functions
-	md_fn = window.markdownit({"html":true}).render;
-	tex_fn = function(x) { return "<div class=\"latex\">" + x + "</div>"; }
+	// A dictionary mapping markers to their rendering functions
+	var dict = { };
+	dict[md_render_marker] = function(x) { return window.markdownit({"html":true}).render(x); }
+	dict[tex_render_marker] = function(x) { return "<div class=\"latex\">" + x + "</div>"; }
+	dict[no_render_marker] = function(x) { return x; }
+
+	// A dict containing the body of the blog split into the read less
+	// and read more sections along with the marker splitting the two sections
+	// If it exits, load it, otherwise initialize it
+	var read_more_dict = { }; 
+	if ( filename in read_more_dict_dict ) {
+		read_more_dict = read_more_dict_dict[filename];
+	}
+	else {
+		read_more_dict[marker_key] = read_more_marker;
+		read_more_dict[read_more_key] = false;
+	}
 
 	// Render markdown and tex as required
 	for ( var i = 0; i < split_blog.length; ++i ) {
+		if (!split_blog[i].trim()) { continue; }
+		split_blog[i] = render_text( split_blog[i].trim(), dict, read_more_dict, no_render_marker );
+	}			
 
-		// Figure out what must be rendered
-		var render_functions = [];
-		while(split_blog[i].startsWith(md_render_marker) || split_blog[i].startsWith(tex_render_marker)) {
-			if (split_blog[i].startsWith(md_render_marker)) {
-				split_blog[i] = split_blog[i].slice(1 + md_render_marker.length);
-				render_functions.push(md_fn);
-			}
-			if (split_blog[i].startsWith(tex_render_marker)) {
-				split_blog[i] = split_blog[i].slice(1 + tex_render_marker.length);
-				render_functions.push(tex_fn);
-			}
-		}
+	// Add the read more dict to the global array
+	read_more_dict_dict[filename] = read_more_dict;
 
-		// Render it
-		for ( var k = 0; k < render_functions.length; ++k ) {
-			split_blog[i] = render_functions[k](split_blog[i]);	
+	// Create the button's script
+	for ( var btn_indx = 0; i < format_list.length; ++btn_indx ) {
+		var tmp = format_list[btn_indx].split(button_marker);
+		if ( tmp.length > 1 ) {
+			var edited_button = tmp[0].trim() + "\"toggle_read_more('" + filename + "')\" ><b>READ ";
+			var add = "MORE »"; if (read_more_dict_dict[filename][read_more_key]) { add = "LESS «"; }
+			edited_button += add + "</b>" + tmp[1];
+			break;
 		}
 	}
 
-	// Interweve the blog info with the formatting items to create the new blog
-	var new_blog = format_list[1];
-	for ( var i = 1; i < split_blog.length; ++i ) {
-		new_blog += split_blog[i] + format_list[i+1];
+	// Interweave the blog info with the formatting items to create the new blog
+	// Special case for creating the button
+	var new_blog = format_list[0];
+	for ( var i = 0; i < split_blog.length; ++i ) {
+		if ( (i+1) === btn_indx ) {
+			new_blog += split_blog[i] + edited_button;
+		}
+		else {
+			new_blog += split_blog[i] + format_list[i+1];
+		}
 	}
 
-	// Add the new blog
-	var old_blogs = document.getElementById(blogs_output_div).innerHTML;
-	document.getElementById(blogs_output_div).innerHTML = old_blogs + new_blog;
+	// If the blog is new, record it
+	var is_new = ! (filename in ready_for_display_dict);
+	if ( is_new ) {
+		ready_for_display_dict[filename] = ready_for_display_list.length; 
+		ready_for_display_list.push(new_blog);
+	}
+
+	// Create the div to hold the blog
+	var indx = ready_for_display_dict[filename];
+	var id = "BlogDiv" + indx
+	var dv = '<div id="' + id + '"></div>';
+
+	// If the blog is new, record the div
+	if ( is_new ) {
+		document.getElementById(blogs_output_div).innerHTML += dv;
+	}
+
+	// Update the blog
+	document.getElementById(id).innerHTML = new_blog;
+	if ( ! is_new ) {
+		ready_for_display_list[indx] = new_blog;
+	}
 }
 
 // Create a blog from a filename
 // Takes the file to be blogged as the argument
-function create_blog_post(filename, blog_format_list) {
+function create_blog_post(filename) {
 
 	// Read the blog file
 	var blog_text = { internal:"" };
@@ -141,7 +254,7 @@ function create_blog_post(filename, blog_format_list) {
 	// Wait for and blog file to have been read, then add the blog
 	function wait_for_vars() {
 		if ( blog_text.internal ) {
-			add_and_format_blog(blog_text.internal, blog_format_list);
+			add_and_format_blog(filename, blog_text.internal);
 		}
 		else {
 			setTimeout(wait_for_vars, 50);
@@ -150,17 +263,20 @@ function create_blog_post(filename, blog_format_list) {
 	wait_for_vars();
 }
 
+// A function called when the read more / read less button is clicked
+function toggle_read_more(filename) {
+	read_more_dict_dict[filename][read_more_key] = ! read_more_dict_dict[filename][read_more_key];
+	create_blog_post(filename);
+}
+
 // A function to load all blogs in a list, ignores empty entries
-function load_blogs(blog_names, blog_format_list) {
-	
-	// For each blog, load it, ignore empty entries
+function load_blogs(blog_names) {
 	for ( var i = 0; i < blog_names.length; ++i ) {
 		if (blog_names[i]) {		
-			create_blog_post(blog_names[i], blog_format_list);
+			create_blog_post(blog_names[i]);
 		}
 	}
 }
-
 
 // A function used to load all blogs listed in the file blog_list_file
 function generate_blog(blog_list_file) {
@@ -177,12 +293,15 @@ function generate_blog(blog_list_file) {
 	function wait_for_blog_list() {
 		if ( blog_list.internal && blog_format_obj.internal ) {
 
-			// Determine the format delimiter and split the format up
-			var delimiter = blog_format_obj.internal.split("\n")[0];
-			var split_format = blog_format_obj.internal.split(delimiter);
+			// Determine the format delimiter, button marker, and split the format up
+			var format_split_by_line = blog_format_obj.internal.split("\n")
+			button_marker = format_split_by_line[0];
+			var delimiter = format_split_by_line[1];
+			format_list = blog_format_obj.internal.split(delimiter);
+			format_list.shift()
 
 			// Load all blogs listed
-			load_blogs(blog_list.internal.split("\n"), split_format);
+			load_blogs(blog_list.internal.split("\n"));
 		}
 		else {
 			setTimeout(wait_for_blog_list, 50);
