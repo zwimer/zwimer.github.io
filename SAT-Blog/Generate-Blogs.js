@@ -90,7 +90,7 @@ render_text = function( text, dict, read_more_dict, starting_entry ) {
 
 		// If a render marker was found, break
 		for ( var key in dict ) {
-			if ( (key !== starting_entry) && text.startsWith(key) ) { brk = true; break; }
+			if ( text.startsWith(key) ) { brk = true; break; }
 		}
 		if (brk === true) { break; }
 
@@ -237,11 +237,16 @@ function add_and_format_blog(filename, blog_info) {
 		document.getElementById(blogs_output_div).innerHTML = dv + tmp;
 	}
 
-	// Update the blog
-	document.getElementById(id).innerHTML = new_blog;
+	// Update the blog entry
 	if ( ! is_new ) {
 		ready_for_display_list[indx] = new_blog;
 	}
+
+	// Display and render the new blog
+	document.getElementById(id).innerHTML = new_blog;
+	console.log(new_blog)
+	console.log(id)
+	RenderTex(id)
 }
 
 // Create a blog from a filename
