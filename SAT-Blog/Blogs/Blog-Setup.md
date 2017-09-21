@@ -1,5 +1,4 @@
 **!! RENDER MARKDOWN !!**
-**!! RENDER LATEX !!**
 **!! STOP RENDERING !!**
 **!! READ MORE BELOW !!**
 **!!! BLOG ITEM DELIMITER !!!**
@@ -30,7 +29,7 @@ After agreeing upon a topic to study for the next semester, my advisor, professo
 ### Or small text
 
 I can even write latex!
-**!! RENDER LATEX !!**
+**!! STOP RENDERING !!**
 $$f(a) = \sum_{i=0}^{\sum_{k=0}^w \frac{w}{k}}\frac{1}{2\pi i}\oint_\gamma\frac{f(z)}{z-a_i}dz$$
 **!! RENDER MARKDOWN !!**
 

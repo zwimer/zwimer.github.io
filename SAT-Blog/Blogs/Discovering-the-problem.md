@@ -1,5 +1,4 @@
 **!! RENDER MARKDOWN !!**
-**!! RENDER LATEX !!**
 **!! STOP RENDERING !!**
 **!! READ MORE BELOW !!**
 **!!! BLOG ITEM DELIMITER !!!**

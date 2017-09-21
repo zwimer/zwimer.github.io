@@ -138,18 +138,17 @@ function add_and_format_blog(filename, blog_info) {
 	// Determine the delimiters of this file
 	var blog_split_by_line = blog_info.split("\n");
 	var md_render_marker = blog_split_by_line[0];
-	var tex_render_marker = blog_split_by_line[1];
-	var no_render_marker = blog_split_by_line[2];
-	var read_more_marker = blog_split_by_line[3];
-	var delimiter = blog_split_by_line[4];
+	var no_render_marker = blog_split_by_line[1];
+	var read_more_marker = blog_split_by_line[2];
+	var delimiter = blog_split_by_line[3];
 
 	// Split the blog up according to the delimiter
 	var split_blog = blog_info.split(delimiter);
 	split_blog.shift()
 
 	// Error checking
-	if (md_render_marker === tex_render_marker) {
-		alert("Error: " + filename + " has identicaly the markdown and tex markers!");
+	if (md_render_marker === no_render_marker) {
+		alert("Error: " + filename + " has identical render markdown and no render markers!");
 		return;
 	}
 	else if (format_list.length < 2 || split_blog.length < 1) {
@@ -172,7 +171,6 @@ function add_and_format_blog(filename, blog_info) {
 	// A dictionary mapping markers to their rendering functions
 	var dict = { };
 	dict[md_render_marker] = function(x) { return window.markdownit({"html":true}).render(x); }
-	dict[tex_render_marker] = function(x) { return "<div class=\"latex\">" + x + "</div>"; }
 	dict[no_render_marker] = function(x) { return x; }
 
 	// A dict containing the body of the blog split into the read less
@@ -187,7 +185,7 @@ function add_and_format_blog(filename, blog_info) {
 		read_more_dict[read_more_key] = false;
 	}
 
-	// Render markdown and tex as required
+	// Render markdown as required
 	for ( var i = 0; i < split_blog.length; ++i ) {
 		if (!split_blog[i].trim()) { continue; }
 		split_blog[i] = render_text( split_blog[i].trim(), dict, read_more_dict, no_render_marker );
