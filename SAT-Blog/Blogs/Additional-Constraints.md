@@ -23,7 +23,6 @@ September 25, 2017
 
 // Body
 As I was testing my program, I noticed that my program often resulted in a mathematically valid solution which was quite different from the input image. The reason for this is simple: under constrained problems generally have multiple solutions. In the book detailing how this digital tomography works, indeed it stated that what I implemented is quite under constrained, however additional constraints can increase my chances / accuracy. Despite this, as most programmers do, I wanted my program to produce the *correct* solution, not just _some_ solution. To that end, a thought occurred to me:
-**!! STOP RENDERING !!**
 
 **!! READ MORE BELOW !!**
 
