@@ -242,8 +242,6 @@ function add_and_format_blog(filename, blog_info) {
 
 	// Display and render the new blog
 	document.getElementById(id).innerHTML = new_blog;
-	console.log(new_blog)
-	console.log(id)
 	RenderTex(id)
 }
 

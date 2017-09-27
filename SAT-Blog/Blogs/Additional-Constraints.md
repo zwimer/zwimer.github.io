@@ -10,7 +10,7 @@ Additional Constraints
 **!!! BLOG ITEM DELIMITER !!!**
 
 // Title description
-Utilizing a scaled down image of size \(n\ \times\ m\).
+Utilizing a scaled down image of size <span class="math inline">\(n\ \times\ m\)</span>
 
 **!!! BLOG ITEM DELIMITER !!!**
 
@@ -29,7 +29,19 @@ As I was testing my program, I noticed that my program often resulted in a mathe
 <p>What if we used a scaled down image as an additional constraint. To that end, I simply implemented the following. Choose two sizes <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> which represent partition sizes. Next partition the image into disjoint sections each of size <span class="math inline">\(n\ \times\ m\)</span>. From there, each partition can be simplified down to a single pixel: True if the majority of pixels in the partition are on, false otherwise. Consider the following simple example where each block size is <span class="math inline">\(2\ \times\ 2\)</span>: <span class="math display">\[ \begin{bmatrix} 1 &amp; 1 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 1 \end{bmatrix} \rightarrow \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix} \]</span></p>
 
 To test this I used the following simple image as an example:
-![Correct](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/)
+![Correct](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Correct.bmp)
+
+When running this image with block sizes of <span class="math inline">\(48\ \times\ 48\)</span>, I have the scaled down image and reconstructed images:
+![Scaled down 48x48](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scaled-48.bmp)
+![Solution 48x48](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scale-48.bmp)
+
+When running this image with block sizes of <span class="math inline">\(6\ \times\ 6\)</span>, I have the scaled down image and reconstructed images:
+![Scaled down 6x6](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scaled-6.bmp)
+![Solution 6x6](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scale-6.bmp)
+
+When running this image with block sizes of <span class="math inline">\(2\ \times\ 2\)</span>, I have the scaled down image and reconstructed images:
+![Scaled down 2x2](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scaled-2.bmp)
+![Solution 2x2](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scale-2.bmp)
 
 **!!! BLOG ITEM DELIMITER !!!**
 
