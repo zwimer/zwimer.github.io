@@ -23,6 +23,7 @@ September 25, 2017
 
 // Body
 As I was testing my program, I noticed that my program often resulted in a mathematically valid solution which was quite different from the input image. The reason for this is simple: under constrained problems generally have multiple solutions. In the book detailing how this digital tomography works, indeed it stated that what I implemented is quite under constrained, however additional constraints can increase my chances / accuracy. Despite this, as most programmers do, I wanted my program to produce the *correct* solution, not just _some_ solution. To that end, a thought occurred to me:
+**!! STOP RENDERING !!**
 
 **!! READ MORE BELOW !!**
 
@@ -34,16 +35,19 @@ To test this I used the following simple image as an example:
 When running this image with block sizes of <span class="math inline">\(48\ \times\ 48\)</span>, the relative error was 6.07639%. The scaled down image and reconstructed images:
 
 ![Scaled down 48x48](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scaled-48.bmp)
+
 ![Solution 48x48](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scale-48.bmp)
 
 When running this image with block sizes of <span class="math inline">\(6\ \times\ 6\)</span>, the relative error was 5.55556%. The scaled down image and reconstructed images:
 
 ![Scaled down 6x6](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scaled-6.bmp)
+
 ![Solution 6x6](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scale-6.bmp)
 
 When running this image with block sizes of <span class="math inline">\(2\ \times\ 2\)</span>, there was zero error. The scaled down image and reconstructed images:
 
 ![Scaled down 2x2](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scaled-2.bmp)
+
 ![Solution 2x2](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scale-2.bmp)
 
 As you can clearly see, I decreased the block size, generally, the output image quality improves.
