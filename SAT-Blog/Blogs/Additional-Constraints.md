@@ -32,14 +32,17 @@ To test this I used the following simple image as an example:
 ![Correct](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Correct.bmp)
 
 When running this image with block sizes of <span class="math inline">\(48\ \times\ 48\)</span>, the relative error was 6.07639%. The scaled down image and reconstructed images:
+
 ![Scaled down 48x48](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scaled-48.bmp)
 ![Solution 48x48](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scale-48.bmp)
 
 When running this image with block sizes of <span class="math inline">\(6\ \times\ 6\)</span>, the relative error was 5.55556%. The scaled down image and reconstructed images:
+
 ![Scaled down 6x6](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scaled-6.bmp)
 ![Solution 6x6](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scale-6.bmp)
 
 When running this image with block sizes of <span class="math inline">\(2\ \times\ 2\)</span>, there was zero error. The scaled down image and reconstructed images:
+
 ![Scaled down 2x2](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scaled-2.bmp)
 ![Solution 2x2](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Additional-Constraints/Scale-2.bmp)
 
