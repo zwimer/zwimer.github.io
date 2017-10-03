@@ -217,31 +217,13 @@ function add_and_format_blog(filename, blog_info) {
 		}
 	}
 
-	// If the blog is new, record it
-	var is_new = ! (filename in ready_for_display_dict);
-	if ( is_new ) {
-		ready_for_display_dict[filename] = ready_for_display_list.length; 
-		ready_for_display_list.push(new_blog);
-	}
-
-	// Create the div to hold the blog
-	var indx = ready_for_display_dict[filename];
-	var id = "BlogDiv" + indx
-	var dv = '<div id="' + id + '"></div>';
-
-	// If the blog is new, record the div
-	if ( is_new ) {
-		var tmp = document.getElementById(blogs_output_div).innerHTML;
-		document.getElementById(blogs_output_div).innerHTML = dv + tmp;
-	}
-
 	// Update the blog entry
-	if ( ! is_new ) {
-		ready_for_display_list[indx] = new_blog;
-	}
+	var indx = ready_for_display_dict[filename];
+	ready_for_display_list[indx] = new_blog;
 
 	// Display and render the new blog
-	document.getElementById(id).innerHTML = new_blog;
+	document.getElementById("BlogDiv" + indx).innerHTML = new_blog;
+	var id = "BlogDiv" + indx
 	RenderTex(id)
 }
 
@@ -273,6 +255,18 @@ function toggle_read_more(filename) {
 
 // A function to load all blogs in a list, ignores empty entries
 function load_blogs(blog_names) {
+
+	// Create the div to hold the blog
+	for ( var i = 0; i < blog_names.length; ++i ) {
+		var id = "BlogDiv" + i
+		var dv = '<div id="' + id + '"></div>';
+		var tmp = document.getElementById(blogs_output_div).innerHTML;
+		document.getElementById(blogs_output_div).innerHTML = dv + tmp;
+		ready_for_display_dict[blog_names[i]] = i;
+		ready_for_display_list.push("");
+	}
+
+	// Create each post
 	for ( var i = 0; i < blog_names.length; ++i ) {
 		if (blog_names[i]) {		
 			create_blog_post(blog_names[i]);
