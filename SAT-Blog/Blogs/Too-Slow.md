@@ -26,9 +26,9 @@ Unfortunately, integer programming, what we used to solve this digital tomograph
 
 **!! READ MORE BELOW !!**
 
-This fact is all too evident unfortunately. For a 30x30 pixel image, the solver takes under a second. For a 60x60 pixel image, the solver generally takes a couple seconds. As for an 80x80 image however, sadly this can take much longer... Over an hour long. But this independent study is about solving NP-Complete algorithms in P-time; so what if we were to approximate our IP problem with a linear programming problem?
+This fact is all too evident unfortunately. For a 30x30 pixel image, the solver takes under a second. For a 60x60 pixel image, the solver generally takes a couple seconds. As for an 80x80 image however, sadly this can take much longer... Over an hour long. But out of curiosity, I must ask: what if we were to approximate our IP problem with a linear programming problem?
 
 **!!! BLOG ITEM DELIMITER !!!**
 
 // Edits of this post
-0
+1
