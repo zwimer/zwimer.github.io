@@ -21,7 +21,7 @@ October 3, 2017
 // Note: Markdown should always be rendered first as latex does not respect whitespace
 
 // Body
-Last week I found myself wondering: What if I could approximate the integer programming problem with linear programming? To find out, I simply removed the constraint from $A{\vec x}={\vec b}$ that for $x_i \in {\vec x}$, $x_i \in \{ 0, 1 \}$. Doing so was a relaxation of this problem
+Last week I found myself wondering: What if I could approximate the integer programming problem with linear programming? To find out, I simply removed the constraint from <span class="math inline">\(A{\vec x}={\vec b}\)</span> that for <span class="math inline">\(x_i \in {\vec x}\)</span>, <span class="math inline">\(x_i \in \{ 0, 1 \}\)</span>. Doing so was a relaxation of this problem
 
 **!! READ MORE BELOW !!**
 
@@ -29,7 +29,7 @@ Unfortunately, my luck with this was not very good. As it turned out, this appro
 
 **!! RENDER MARKDOWN !!**
 
-For the Jagged-A image, 12% total error (including white pixels) was found.
+For the Jagged-A image, 12% total error (black and white pixels) was found.
 
 ![Jagged-A](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/P-Time-Fail/Jagged_A.bmp)
 
