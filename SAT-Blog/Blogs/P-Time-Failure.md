@@ -51,7 +51,7 @@ For the cat2 image, 49.88% total error was found.
 
 Became:
 
-![cat2-error](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/P-Time-Fail/cat2_72_36.bmp)
+![cat2-error](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/P-Time-Fail/cat2_72_56.bmp)
 
 **!!! BLOG ITEM DELIMITER !!!**
 
