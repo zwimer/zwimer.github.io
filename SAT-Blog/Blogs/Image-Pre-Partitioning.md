@@ -48,7 +48,9 @@ The actual elephant.bmp is here:
 
 ![Elephant](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Image-Pre-Part/Elephant.bmp)
 
+For more examples, click [here](https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Image-Pre-Part/Examples/) 
+
 **!!! BLOG ITEM DELIMITER !!!**
 
 // Edits of this post
-0
+1
