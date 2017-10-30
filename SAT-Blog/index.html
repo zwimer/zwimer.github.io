@@ -87,11 +87,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 </div>
 
 <!-- Footer -->
-<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
-  <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
-  <button class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</button>
-  <p>Copyright &copy; zwimer.com 2017 </p>
-</footer>
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top" id="CustomFooter"></footer>
 
 <!-- Javascript section -->
 
@@ -116,7 +112,11 @@ and is wrapped around the whole page content, except for the footer in this exam
 	generate_blog("Blog-List")
 </script>
 
+<!-- Generate footer -->
+<script src = "Generate-Footer.js"></script>
+<script>
+	generate_footer(0, true, false)
+</script>
 
 </body>
 </html>
-

@@ -35,6 +35,11 @@ var button_marker = "";
 var ready_for_display_dict = {};
 var ready_for_display_list = [];
 
+// Page number
+var page_number = 1;
+var blogs_per_page = 5;
+var blog_list_split = 0;
+
 //*************************************************************//
 //*                                                           *//
 //*                        Functions                          *//
@@ -256,6 +261,9 @@ function toggle_read_more(filename) {
 // A function to load all blogs in a list, ignores empty entries
 function load_blogs(blog_names) {
 
+	// Clear the blog output div
+	document.getElementById(blogs_output_div).innerHTML = "";
+
 	// Create the div to hold the blog
 	for ( var i = 0; i < blog_names.length; ++i ) {
 		var id = "BlogDiv" + i
@@ -272,6 +280,16 @@ function load_blogs(blog_names) {
 			create_blog_post(blog_names[i]);
 		}
 	}
+}
+
+// Decide which blogs to load and load them
+function load_current_page() {
+	var end = page_number * blogs_per_page;
+	blog_list_split.reverse();
+	blogs = blog_list_split.slice( end - blogs_per_page, end );
+	blog_list_split.reverse();
+	blogs.reverse();
+	load_blogs( blogs );
 }
 
 // A function used to load all blogs listed in the file blog_list_file
@@ -296,12 +314,27 @@ function generate_blog(blog_list_file) {
 			format_list = blog_format_obj.internal.split(delimiter);
 			format_list.shift()
 
+			// Store the split blog list
+			blog_list_split = blog_list.internal.split("\n");
+			if (blog_list_split[blog_list_split.length - 1] === "") {
+				blog_list_split.splice(-1);
+			}
+
 			// Load all blogs listed
-			load_blogs(blog_list.internal.split("\n"));
+			load_current_page()
 		}
 		else {
 			setTimeout(wait_for_blog_list, 50);
 		}
 	}
-	wait_for_blog_list();
+
+	// Only read blogs if needed
+	if (blog_list_split === 0) {
+		wait_for_blog_list();
+	}
+
+	// Otherwise, just load the blogs
+	else {
+		load_current_page()
+	}
 }
