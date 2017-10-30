@@ -33,7 +33,6 @@ var button_marker = "";
 // The list contains the fully rendered html blogs. Together these
 // two variables comprise an ordered dictionary
 var ready_for_display_dict = {};
-var ready_for_display_list = [];
 
 // Page number
 var page_number = 1;
@@ -224,7 +223,6 @@ function add_and_format_blog(filename, blog_info) {
 
 	// Update the blog entry
 	var indx = ready_for_display_dict[filename];
-	ready_for_display_list[indx] = new_blog;
 
 	// Display and render the new blog
 	document.getElementById("BlogDiv" + indx).innerHTML = new_blog;
@@ -271,7 +269,6 @@ function load_blogs(blog_names) {
 		var tmp = document.getElementById(blogs_output_div).innerHTML;
 		document.getElementById(blogs_output_div).innerHTML = dv + tmp;
 		ready_for_display_dict[blog_names[i]] = i;
-		ready_for_display_list.push("");
 	}
 
 	// Create each post
