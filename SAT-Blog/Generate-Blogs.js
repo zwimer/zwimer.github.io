@@ -29,9 +29,7 @@ var marker_key = "marker";
 var format_list = [];
 var button_marker = "";
 
-// A dict mapping a filename to an index in the ready_to_display_list.
-// The list contains the fully rendered html blogs. Together these
-// two variables comprise an ordered dictionary
+// A dict mapping a filename to an index 
 var ready_for_display_dict = {};
 
 // Page number
