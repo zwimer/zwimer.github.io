@@ -6,7 +6,7 @@
 
 // Title
 **!! RENDER MARKDOWN !!**
-## PuLP is broken
+# PuLP is broken !!!
 **!! STOP RENDERING !!**
 
 **!!! BLOG ITEM DELIMITER !!!**
@@ -32,7 +32,7 @@ After exploring this problem, I discovered that this was because PuLP had output
 
 If you give PuLP an infeasible problem, PuLP will not fail; instead it will ignore any constraints which make it infeasible; from ignoring the upper and lower bounds to using non-integers. The worst part of this is that while PuLP gives warnings to the user for many things, this action is silent; constraints are ignored without informing the user, giving the illusion that the solution returned solves the problem put in as is.
 
-To this end, I created a simplified problem and submitted it along with an issue to PuLP, located (here)[https://github.com/coin-or/pulp/issues/157]
+To this end, I created a simplified problem and submitted it along with an issue to PuLP, located [here](https://github.com/coin-or/pulp/issues/157)
 
 **!!! BLOG ITEM DELIMITER !!!**
 
