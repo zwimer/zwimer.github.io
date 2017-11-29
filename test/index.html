@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	:D 1
+	
+	<script>
+
+		// Curl a website
+		function curl( site ) {
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open( "GET", site, false ); // false for synchronous request
+			xmlHttp.send( null );
+			return xmlHttp.responseText;
+		}
+		
+		alert("HI");
+
+		// Get the ip and create url
+		var ip = curl("https://icanhazip.com").trim();
+		var addr = "https://freegeoip.net/json/" + ip;
+
+		// Print info
+		alert(curl(addr));
+  
+	</script>
+</html>
