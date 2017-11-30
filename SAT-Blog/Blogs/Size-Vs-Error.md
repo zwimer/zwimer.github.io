@@ -27,7 +27,7 @@ To see the effects of the size of a matrix to it's error, I decided to write a p
 1. Fix a variable K
 2. `for each n in range(4, 25 + 1)`
    1. `for each k in range(K)`
-      1. Generate a matrix of size NxN
+      1. Generate a matrix of size N x N
       2. Run the tomography program on the matrix
       3. Record the error
    2. Create a histogram of the error distributions for matricies of size N x N
