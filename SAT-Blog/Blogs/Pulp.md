@@ -20,7 +20,6 @@ PuLP may ignore bounding and integer constraints.
 November 15, 2017
 
 **!!! BLOG ITEM DELIMITER !!!**
-**!! RENDER MARKDOWN !!**
 // Note: Markdown should always be rendered first as latex does not respect whitespace
 
 // Body
@@ -28,10 +27,11 @@ Last week, professor Moorthy asked me to run my digital tomography program on a 
 
 **!! READ MORE BELOW !!**
 
-After exploring this problem, I discovered that this was because PuLP had output numbers such as <span class="math inline">\(-500,000\)</span>, which did not fall in the set of valid possible values: <span class="math inline">\(\{0, 1\}\)</span>. After further analyzing my code, I discovered the problem was with not my code, but was PuLP !
+After exploring this problem, I discovered that this was because PuLP had output numbers such as <span class="math inline">\( -500,000 \)</span>, which did not fall in the set of valid possible values: <span class="math inline">\( \{0, 1\} \)</span>. After further analyzing my code, I discovered the problem was with not my code, but was PuLP !
 
 If you give PuLP an infeasible problem, PuLP will not fail; instead it will ignore any constraints which make it infeasible; from ignoring the upper and lower bounds to using non-integers. The worst part of this is that while PuLP gives warnings to the user for many things, this action is silent; constraints are ignored without informing the user, giving the illusion that the solution returned solves the problem put in as is.
 
+**!! RENDER MARKDOWN !!**
 To this end, I created a simplified problem and submitted it along with an issue to PuLP, located [here](https://github.com/coin-or/pulp/issues/157)
 
 **!!! BLOG ITEM DELIMITER !!!**

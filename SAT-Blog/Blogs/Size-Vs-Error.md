@@ -27,10 +27,10 @@ To see the effects of the size of a matrix to it's error, I decided to write a p
 1. Fix a variable K
 2. `for each n in range(4, 25 + 1)`
    1. `for each k in range(K)`
-      1. Generate k a matrix of size <span class="math inline">\( N \times N \)</span>
+      1. Generate a matrix of size NxN
       2. Run the tomography program on the matrix
       3. Record the error
-   2. Create a histogram of the error distributions for matricies of size <span class="math inline">\( N \times N \)</span>
+   2. Create a histogram of the error distributions for matricies of size N x N
 3. Place each histogram on the same 3d graph
 
 **!! READ MORE BELOW !!**
@@ -39,7 +39,7 @@ To see the effects of the size of a matrix to it's error, I decided to write a p
 Once I did this, here are a the results:
 
 <div style="text-align: center;">
-   <img src="https://zwimer.github.io/zwimer.com//SAT-Blog/Blogs/figs/Size-Vs-Error/fig1.png" style="max-width: 100%; height: auto;" alt="FYI, image alt text is required" />
+   <img src="https://github.com/zwimer/zwimer.github.io/blob/master/SAT-Blog/Blogs/figs/Size-Vs-Error/fig1.png?raw=true" style="max-width: 100%; height: auto;" alt="Alt text is required" />
 </div>
 
 **!!! BLOG ITEM DELIMITER !!!**

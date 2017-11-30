@@ -26,7 +26,7 @@ My matlab code for solving binary digital tomography problems is attached below
 **!! READ MORE BELOW !!**
 **!! RENDER MARKDOWN !!**
 
-The code is all stored [here](https://github.com/zwimer/zwimer.com/tree/gh-pages/SAT-Blog/Blogs/Code)
+The code is all stored [here](https://github.com/zwimer/zwimer.com/tree/master/SAT-Blog/Blogs/Code)
 
 To check Knuth's Siam example, simply run `Knuth.m`
 
